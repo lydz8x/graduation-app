@@ -23,7 +23,7 @@ const AdminDashboard = () => {
       const token = localStorage.getItem("token");
       console.log("Using token:", token);
 
-      const res = await axios.get("http://localhost:5000/api/auth/students", {
+      const res = await axios.get(`${API_URL}/api/auth/students`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
