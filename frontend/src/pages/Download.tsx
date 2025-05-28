@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import ImportantInfo from "../components/ImportantInfo";
+import { API_URL } from "../lib/api";
 
 function Download() {
   const [token, setToken] = useState("");
@@ -22,7 +23,7 @@ function Download() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/verify-token",
+        `${API_URL}/api/auth/verify-token`,
         { inputToken: token },
         {
           headers: {

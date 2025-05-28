@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import ImportantInfo from "../components/ImportantInfo";
+import { API_URL } from "../lib/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,10 +23,7 @@ function Login() {
     setError("");
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData
-      );
+      const res = await axios.post(`${API_URL}/api/auth/login`, formData);
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("studentName", res.data.student.name);

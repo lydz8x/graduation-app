@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import ImportantInfo from "../components/ImportantInfo";
+import { API_URL } from "../lib/api";
 
 function Register() {
   const navigate = useNavigate();
@@ -25,10 +26,7 @@ function Register() {
     setError("");
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        formData
-      );
+      const res = await axios.post(`${API_URL}/api/auth/register`, formData);
       alert(res.data.message);
       navigate("/login");
     } catch (err: any) {

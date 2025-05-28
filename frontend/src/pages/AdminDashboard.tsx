@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { API_URL } from "../lib/api";
 
 type Student = {
   nisn: string;
@@ -87,7 +88,7 @@ const AdminDashboard = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/auth/import",
+          `${API_URL}/api/auth/import`,
           { students: json },
           {
             headers: {
