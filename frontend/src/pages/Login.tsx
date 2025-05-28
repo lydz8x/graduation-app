@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../components/Navbar";
 import ImportantInfo from "../components/ImportantInfo";
 import { API_URL } from "../lib/api";
@@ -13,6 +14,7 @@ function Login() {
     password: "",
   });
   const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -58,15 +60,23 @@ function Login() {
                 className="w-full border px-3 py-2 rounded"
                 required
               />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={show ? "text" : "password"}
+                  name="password"
+                  placeholder="Masukkan Password"
+                  className="w-full px-4 py-2 border rounded pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-2 flex items-center text-gray-500"
+                  onClick={() => setShow((prev) => !prev)}
+                  tabIndex={-1}
+                >
+                  {show ? <Eye size={18} /> : <EyeOff size={18} />}
+                </button>
+              </div>
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"

@@ -3,7 +3,8 @@ const ImportantInfo = () => {
     <div className="max-w-md mx-auto p-4 bg-white shadow rounded">
       <h2 className="text-lg font-bold mb-3">Informasi Penting</h2>
       <div className="text-sm space-y-3 text-gray-700">
-        <div>
+        Soon
+        {/* <div>
           <strong>📄 Pengambilan Ijazah</strong>
           <br />
           Pengambilan ijazah dapat dilakukan mulai tanggal{" "}
@@ -23,7 +24,7 @@ const ImportantInfo = () => {
           Untuk informasi lebih lanjut, silakan hubungi sekretariat MTs YMI
           Wonopringgo di <strong>(0285) 123456</strong>.
         </div>
-        <hr />
+        <hr /> */}
       </div>
     </div>
   );

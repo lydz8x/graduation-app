@@ -160,9 +160,6 @@ router.get(
   "/students",
   verifyToken,
   async (req: AuthRequest, res: Response) => {
-    console.log("Authorized User:", req.user);
-    console.log("User Role:", req.user?.role);
-
     if (req.user?.role !== "admin") {
       console.log("Access denied: User is not admin");
       return res.status(403).json({ message: "Unauthorized" });
@@ -172,7 +169,6 @@ router.get(
       const students = await Student.find({ role: "student" }).select(
         "nisn name birthPlace birthDate token"
       );
-      console.log("Found students:", students.length);
       res.json({ students });
     } catch (error) {
       console.error("Error fetching students:", error);
