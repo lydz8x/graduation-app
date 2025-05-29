@@ -17,6 +17,9 @@ const AdminDashboard = () => {
   const [message, setMessage] = useState("");
   const [search, setSearch] = useState("");
 
+  const itemsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+
   //   Fetch student
   const fetchStudents = async () => {
     try {
@@ -51,6 +54,18 @@ const AdminDashboard = () => {
       s.nisn.toLowerCase().includes(search.toLowerCase()) ||
       s.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  // Pagination
+  const paginatedStudent = filteredStudents.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   //   Export xlsx
   const handleExport = () => {
@@ -107,14 +122,14 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <div className="flex justify-between">
-        <h1 className="text-2xl font-bold mb-4">Dashboard Siswa</h1>
+      <div className="flex justify-between items-center bg-blue-600 px-6 py-4 rounded text-white mb-4 shadow">
+        <h1 className="text-2xl font-bold">Dashboard Siswa</h1>
         <button
           onClick={() => {
             localStorage.clear();
             window.location.href = "/";
           }}
-          className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+          className=" bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
         >
           Logout
         </button>
@@ -150,7 +165,7 @@ const AdminDashboard = () => {
         </div>
 
         <table className="w-full text-sm border rounded">
-          <thead className="bg-gray-100 text-left">
+          <thead className="bg-blue-600 text-white text-left">
             <tr>
               <th className="p-2">Nama</th>
               <th className="p-2">NISN</th>
@@ -159,7 +174,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredStudents.map((s, i) => (
+            {paginatedStudent.map((s, i) => (
               <tr key={i} className="border-t">
                 <td className="p-2">{s.name}</td>
                 <td className="p-2">{s.nisn}</td>
@@ -171,6 +186,27 @@ const AdminDashboard = () => {
             ))}
           </tbody>
         </table>
+        <div className="flex justify-center items-center gap-2 mt-4">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 border rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="text-sm">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 border rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

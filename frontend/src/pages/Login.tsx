@@ -65,6 +65,8 @@ function Login() {
                   type={show ? "text" : "password"}
                   name="password"
                   placeholder="Masukkan Password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border rounded pr-10"
                   required
                 />
