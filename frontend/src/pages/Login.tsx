@@ -97,7 +97,7 @@ function Login() {
             </p>
           </div>
         </div>
-        <ImportantInfo />
+        {/* <ImportantInfo /> */}
       </main>
     </>
   );
