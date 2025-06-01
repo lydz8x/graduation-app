@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import ImportantInfo from "../components/ImportantInfo";
 import { API_URL } from "../lib/api";
 
 function Register() {
@@ -100,7 +99,6 @@ function Register() {
             </p>
           </div>
         </div>
-        <ImportantInfo />
       </main>
     </>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import ImportantInfo from "../components/ImportantInfo";
 import { API_URL } from "../lib/api";
 
 function Download() {
@@ -172,7 +171,6 @@ function Download() {
             )}
           </div>
         </div>
-        {/* <ImportantInfo /> */}
       </main>
     </>
   );

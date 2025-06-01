@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../components/Navbar";
-import ImportantInfo from "../components/ImportantInfo";
 import { API_URL } from "../lib/api";
 
 function Login() {
@@ -97,7 +96,6 @@ function Login() {
             </p>
           </div>
         </div>
-        {/* <ImportantInfo /> */}
       </main>
     </>
   );
