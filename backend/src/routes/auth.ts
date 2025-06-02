@@ -133,7 +133,8 @@ router.post(
         });
       }
 
-      const filePath = `skl/${student.name}_${nisn}.pdf`;
+      const nameSlug = student.name.toUpperCase();
+      const filePath = `skl/SKL ${nisn}-${nameSlug}.pdf`;
 
       const { data, error } = await supabase.storage
         .from("skl")
