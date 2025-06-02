@@ -88,12 +88,12 @@ function Login() {
 
             {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
 
-            <p className="mt-6 text-sm text-center">
+            {/* <p className="mt-6 text-sm text-center">
               Belum punya akun?{""}
               <a href="/register" className="text-blue-600 hover:underline">
                 Daftar di sini
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </main>
